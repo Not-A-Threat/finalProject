@@ -9,9 +9,11 @@ import os
 #loading excel file from dataset folder
 cwd = os.getcwd()
 
+state_consumption_df = pd.read_excel(cwd + '\Datasets\State_Energy_Consumption.xls')
 multiline_df = pd.read_excel(cwd + '\Datasets\Overall_Energy.xlsx')
-'''print(multiline_df)
+'''print(state_consumption_df)
 '''
+
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
 trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fossil Fuels Production'], mode='lines', name='Fossil Fuel Production')
 trace2_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Renewable Energy Production'], mode='lines', name='Renewable Energy Production')
@@ -40,7 +42,6 @@ app.layout = html.Div(children=[
                       title='Fossil Fuel production vs Renewable Energy production',
                       xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'})
                   }),
-
     ])
 
 if __name__ == '__main__':
