@@ -13,9 +13,11 @@ cwd = os.getcwd()
 state_consumption_df = pd.read_excel(cwd + '\Datasets\State_Energy_Consumption.xls')
 multiline_df = pd.read_excel(cwd + '\Datasets\Overall_Energy.xlsx')
 
+state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
+print(state_consumption_df.count())
 #splits data into states and just energy
-split_states = state_consumption_df['State'].str.split(' ')
-split_energy = state_consumption_df['Consumption'].str.split(' ')
+#split_states = state_consumption_df['State'].str.split(' ')
+#split_energy = state_consumption_df['Consumption'].str.split(' ')
  
 #making lines for the multiline chart
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
@@ -27,19 +29,19 @@ app = dash.Dash()
 
 #html layout of the page
 app.layout = html.Div(children=[
-    html.H1(children='Python Dash',
+    html.H1(children='Team Not a Threat',
             style={
                 'textAlign': 'center',
                 'color': '#ef3e18'
             }
             ),
 
-    html.H1('Energy production in the United States', style={'textAlign': 'center'}),
-    html.Br(),
+    html.H1('Renewable and Nonrenewable Energy', style={'textAlign': 'center'}),
     html.Br(),
     html.Hr(style={'color': '#7FDBFF'}),
-    html.H3('H3', style={'color': '#df1e56'}),
-    html.Div('3rd div'),
+    html.H3('Map of the US', style={'color': '#df1e56'}),
+    html.Div('Click a State to get started:'),
+    html.Iframe(src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
     dcc.Graph(id='graph1', 
               figure={
                   'data': data_multiline,
