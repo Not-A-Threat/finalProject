@@ -10,8 +10,8 @@ import os
 cwd = os.getcwd()
 
 #loads data from excel file 
-state_consumption_df = pd.read_excel(cwd + '\Datasets\State_Energy_Consumption.xls')
-multiline_df = pd.read_excel(cwd + '\Datasets\Overall_Energy.xlsx')
+state_consumption_df = pd.read_excel(cwd + '/Datasets/State_Energy_Consumption.xls')
+multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
 state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
 print(state_consumption_df.count())
