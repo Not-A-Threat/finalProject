@@ -11,10 +11,13 @@ cwd = os.getcwd()
 
 state_consumption_df = pd.read_excel(cwd + '\Datasets\State_Energy_Consumption.xls')
 multiline_df = pd.read_excel(cwd + '\Datasets\Overall_Energy.xlsx')
-'''print(state_consumption_df)
-'''
+
 states_by_consumption = pd.DataFrame(state_consumption_df, columns=['State'])
+split_states = states_by_consumption['State'].str.split(' ')
+
 energy_consumption = pd.DataFrame(state_consumption_df, columns=['Consumption'])
+split_energy = energy_consumption['Consumption'].str.split(' ')
+print(split_energy)
 
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
 trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fossil Fuels Production'], mode='lines', name='Fossil Fuel Production')
