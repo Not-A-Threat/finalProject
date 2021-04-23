@@ -11,10 +11,10 @@ import os
 cwd = os.getcwd()
 
 #loads data from excel file 
-state_consumption_df = pd.read_excel(cwd + '/Datasets/State_Energy_Consumption.xls')
+state_consumption_df = pd.read_csv(cwd + '/Datasets/State_Energy_Consumption.csv')
 multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
-state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
+#state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
 
 #making lines for the multiline chart
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
@@ -67,20 +67,27 @@ app.layout = html.Div(children=[
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
-    print(option_slctd)
 
     container = "The state chosen by user was {}".format(option_slctd)
-
-    fig = px.choropleth(
+    
+    '''fig = px.choropleth(
         data_frame=state_consumption_df,
         locationmode='USA-states',
         locations='State',
         scope="usa",
         color='Consumption',
-        hover_data=['State', 'Consumption', 'Consumption per Capita', 'Expenditures'],
-        color_continuous_scale=px.colors.sequential.YlOrRd,
+        hover_data=['State','Consumption'],
+        color_continuous_scale='Virdis',
         labels={'Consumption': 'Consumption'},
-        template='plotly_dark'
+        template='gridon'
+    )'''
+    fig = go.Figure(
+        data=[go.Choropleth(
+            locationmode='USA-states',
+            locations=state_consumption_df['State'],
+            z=state_consumption_df["Consumption per Capita"].astype(float),
+            colorscale='Reds',
+        )]
     )
 
     return container, fig
