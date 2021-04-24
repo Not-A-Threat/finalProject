@@ -14,6 +14,7 @@ cwd = os.getcwd()
 state_consumption_df = pd.read_csv(cwd + '/Datasets/State_Energy_Consumption.csv')
 multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
+state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + ' Consumption per Capita: ' + state_consumption_df['Consumption per Capita']
 #state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
 
 #making lines for the multiline chart
@@ -86,8 +87,10 @@ def update_map(option_slctd):
             locationmode='USA-states',
             locations=state_consumption_df['Code'],
             z=state_consumption_df["Consumption per Capita"].astype(float),
-            colorscale='Reds',
-            colorbar_title='Consumption per Capita'
+            colorscale='Greens',
+            reversescale=True,
+            colorbar_title='Consumption per Capita',
+            text=state_consumption_df['text'],
         )]
     )
     fig.update_layout(
