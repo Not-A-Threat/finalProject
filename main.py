@@ -43,7 +43,7 @@ app.layout = html.Div(children=[
                     {'label': 'Alaska', 'value': 'Alaska'}],
                     
                     multi=False,
-                    value='Albama',
+                    value='none',
                     style={'width': '40%'}
                     ),
     html.Div(id='output_container', children=[]),
@@ -69,26 +69,31 @@ app.layout = html.Div(children=[
 def update_map(option_slctd):
 
     container = "The state chosen by user was {}".format(option_slctd)
-    
-    '''fig = px.choropleth(
+    '''
+    fig = px.choropleth(
         data_frame=state_consumption_df,
         locationmode='USA-states',
-        locations='State',
+        locations='Code',
         scope="usa",
-        color='Consumption',
-        hover_data=['State','Consumption'],
-        color_continuous_scale='Virdis',
+        color='Consumption per Capita',
+        hover_data=['State','Consumption', 'Consumption per Capita'],
         labels={'Consumption': 'Consumption'},
-        template='gridon'
-    )'''
+        template='presentation'
+    )
+    '''
     fig = go.Figure(
         data=[go.Choropleth(
             locationmode='USA-states',
-            locations=state_consumption_df['State'],
+            locations=state_consumption_df['Code'],
             z=state_consumption_df["Consumption per Capita"].astype(float),
             colorscale='Reds',
+            colorbar_title='Consumption per Capita'
         )]
     )
+    fig.update_layout(
+        geo_scope='usa',
+    )
+    #'''
 
     return container, fig
 
