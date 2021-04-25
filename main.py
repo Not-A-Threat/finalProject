@@ -26,14 +26,16 @@ data_multiline = [trace1_multiline, trace2_multiline]
 app = dash.Dash()
 
 #html layout of the page
-app.layout = html.Div(children=[
+app.layout = html.Div(style={
+    'background-image':'url("/assets/green_energy.jpg")'
+},
+children=[
     html.H1(children='Team Not a Threat',
             style={
                 'textAlign': 'center',
                 'color': '#ef3e18'
-            }
-            ),
-
+            }),
+    
     html.H1('Renewable and Nonrenewable Energy', style={'textAlign': 'center'}),
     html.Br(),
     html.Hr(style={'color': '#7FDBFF'}),
