@@ -28,19 +28,17 @@ server = app.server
 
 #html layout of the page
 app.layout = html.Div(style={
-    'background-image':'url("/assets/green_energy.jpg")'
+    'background-image':'url("/assets/green-gradient.svg")'
 },
 children=[
     html.H1(children='Team Not a Threat',
-            style={
-                'textAlign': 'center',
-                'color': '#ef3e18'
-            }),
-    
-    html.H1('Renewable and Nonrenewable Energy', style={'textAlign': 'center'}),
+            style={'textAlign': 'center', 'color': '#e0e0e0'}),
+    html.Br(),
+    html.H1('About Us', style={'textAlign': 'center', 'color':'#d4d4d4'}),
+    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#d4d4d4'}),
     html.Br(),
     html.Hr(style={'color': '#7FDBFF'}),
-    html.H3('Map of the US', style={'color': '#df1e56'}),
+    html.H3('Map of the US', style={'color': '#d4d4d4'}),
     dcc.Dropdown(id='slct_state',
                 options=[
                     {'label': 'Alabama', 'value': 'Alabama'},
