@@ -72,18 +72,17 @@ children=[
 def update_map(option_slctd):
 
     container = "The state chosen by user was {}".format(option_slctd)
-    '''
-    fig = px.choropleth(
-        data_frame=state_consumption_df,
-        locationmode='USA-states',
-        locations='Code',
-        scope="usa",
-        color='Consumption per Capita',
-        hover_data=['State','Consumption', 'Consumption per Capita'],
-        labels={'Consumption': 'Consumption'},
-        template='presentation'
-    )
-    '''
+    # fig = px.choropleth(
+    #     data_frame=state_consumption_df,
+    #     locationmode='USA-states',
+    #     locations='Code',
+    #     scope="usa",
+    #     color='Consumption per Capita',
+    #     hover_data=['State','Consumption', 'Consumption per Capita'],
+    #     labels={'Consumption': 'Consumption'},
+    #     template='presentation'
+    # )
+
     fig = go.Figure(
         data=[go.Choropleth(
             locationmode='USA-states',
@@ -98,7 +97,6 @@ def update_map(option_slctd):
     fig.update_layout(
         geo_scope='usa',
     )
-    #'''
 
     return container, fig
 
