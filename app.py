@@ -33,7 +33,7 @@ app.layout = html.Div(style={
 },
 children=[
     html.H1(children='Team Not a Threat',
-            style={'textAlign': 'center', 'color': '#70233a'}),
+            style={'textAlign': 'center', 'color': '#e0e0e0'}),
     html.Br(),
     html.H1('About Us', style={'textAlign': 'center', 'color':'#d4d4d4'}),
     html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#d4d4d4'}),
