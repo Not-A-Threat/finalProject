@@ -24,6 +24,7 @@ trace2_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Ren
 data_multiline = [trace1_multiline, trace2_multiline]
 
 app = dash.Dash()
+server = app.server
 
 #html layout of the page
 app.layout = html.Div(style={
