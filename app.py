@@ -14,6 +14,7 @@ cwd = os.getcwd()
 state_consumption_df = pd.read_csv(cwd + '/Datasets/State_Energy_Consumption.csv')
 multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
+#creates a 'text' field of parts of the state consumption data frame
 state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + ' Consumption per Capita: ' + state_consumption_df['Consumption per Capita']
 #state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
 
@@ -32,7 +33,7 @@ app.layout = html.Div(style={
 },
 children=[
     html.H1(children='Team Not a Threat',
-            style={'textAlign': 'center', 'color': '#e0e0e0'}),
+            style={'textAlign': 'center', 'color': '#70233a'}),
     html.Br(),
     html.H1('About Us', style={'textAlign': 'center', 'color':'#d4d4d4'}),
     html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#d4d4d4'}),
