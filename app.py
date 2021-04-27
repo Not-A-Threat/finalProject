@@ -43,7 +43,7 @@ children=[
     html.Br(),
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
     html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
-    html.Div(' The company was founded by Joseph Chica, Colin McNeil, Willis Reid, and Duy Minh Pham', style={'font-size':'120%', 'color':'#2b2b2b'}),
+    #html.Div(' The company was founded by Joseph Chica, Colin McNeil, Willis Reid, and Duy Minh Pham', style={'font-size':'120%', 'color':'#2b2b2b'}),
     html.Br(),
     html.Br(),
     html.H3('Hover over the map to see data for each state, or select a State below:', style={'color': '#2b2b2b'}),
