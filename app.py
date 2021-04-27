@@ -29,7 +29,7 @@ trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fos
 trace2_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Renewable Energy Production'], mode='lines', name='Renewable Energy Production')
 data_multiline = [trace1_multiline, trace2_multiline]
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 server = app.server
 
 
