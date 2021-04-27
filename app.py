@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.graph_objs as go 
 import plotly.express as px
 import os
+import unicodedata
 
 #Grabs current working directory
 cwd = os.getcwd()
@@ -16,7 +17,11 @@ multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
 #creates a 'text' field of parts of the state consumption data frame
 state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + ' Consumption per Capita: ' + state_consumption_df['Consumption per Capita']
-#state_consumption_df = state_consumption_df.groupby(['State', 'Consumption', 'Rank', 'Consumption per Capita', 'Expenditures'])['Rank']
+states = state_consumption_df.loc['0':, 'State'].values.tolist()
+states=[unicodedata.normalize('NFKD', word) for word in states]
+states = [x.strip(' ') for x in states]
+states = sorted(states)
+
 
 #making lines for the multiline chart
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
@@ -27,75 +32,27 @@ data_multiline = [trace1_multiline, trace2_multiline]
 app = dash.Dash()
 server = app.server
 
+
 #html layout of the page
 app.layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")'
 },
 children=[
     html.H1(children='Team Not a Threat',
-            style={'textAlign': 'center', 'color': '#e0e0e0'}),
+            style={'textAlign': 'center', 'color': '#1f1f1f'}),
     html.Br(),
-    html.H1('About Us', style={'textAlign': 'center', 'color':'#d4d4d4'}),
-    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#d4d4d4'}),
+    html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
+    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
+    html.Div(' The company was founded by Joseph Chica, Colin McNeil, Willis Reid, and Duy Minh Pham', style={'font-size':'120%', 'color':'#2b2b2b'}),
     html.Br(),
-    html.Hr(style={'color': '#7FDBFF'}),
-    html.H3('Map of the US', style={'color': '#d4d4d4'}),
+    html.Br(),
+    html.H3('Hover over the map to see data for each state, or select a State below:', style={'color': '#2b2b2b'}),
     dcc.Dropdown(id='slct_state',
                 options=[
-                    {'label': 'Alabama', 'value': 'Alabama'},
-                    {'label': 'Alaska', 'value': 'Alaska'},
-                    {'label': 'Arizona', 'value': 'Arizona'},
-                    {'label': 'Arkanas', 'value': 'Arkanas'},
-                    {'label': 'California', 'value': 'California'},
-                    {'label': 'Colorado', 'value': 'Colorado'},
-                    {'label': 'Connecticut', 'value': 'Connecticut'},
-                    {'label': 'Deleware', 'value': 'Deleware'},
-                    {'label': 'Florida', 'value': 'Florida'},
-                    {'label': 'Georgia', 'value': 'Georgia'},
-                    {'label': 'Hawaii', 'value': 'Hawaii'},
-                    {'label': 'Idaho', 'value': 'Idaho'},
-                    {'label': 'Illinois', 'value': 'Illinois'},
-                    {'label': 'Indiana', 'value': 'Indiana'},
-                    {'label': 'Iowa', 'value': 'Iowa'},
-                    {'label': 'Kansas', 'value': 'Kansas'},
-                    {'label': 'Kentucky', 'value': 'Kentucky'},
-                    {'label': 'Louisiana', 'value': 'Louisiana'},
-                    {'label': 'Maine', 'value': 'Maine'},
-                    {'label': 'Massachusetts', 'value': 'Massachusetts'},
-                    {'label': 'Michgan', 'value': 'Michgan'},
-                    {'label': 'Minnesota', 'value': 'Minnesota'},
-                    {'label': 'Mississippi', 'value': 'Mississippi'},
-                    {'label': 'Missouri', 'value': 'Missouri'},
-                    {'label': 'Montana', 'value': 'Montana'},
-                    {'label': 'Nebraska', 'value': 'Nebraska'},
-                    {'label': 'Nevada', 'value': 'Nevada'},
-                    {'label': 'New Hampshire', 'value': 'New Hampshire'},
-                    {'label': 'New Jersey', 'value': 'New Jersey'},
-                    {'label': 'New Mexico', 'value': 'New Mexico'},
-                    {'label': 'New York', 'value': 'New York'},
-                    {'label': 'North Carolina', 'value': 'North Carolina'},
-                    {'label': 'North Dakota', 'value': 'North Dakota'},
-                    {'label': 'Ohio', 'value': 'Ohio'},
-                    {'label': 'Oklahoma', 'value': 'Oklahoma'},
-                    {'label': 'Oregon', 'value': 'Oregon'},
-                    {'label': 'Pennsylvania', 'value': 'Pennsylvania'},
-                    {'label': 'Rhode Island', 'value': 'Rhode Island'},
-                    {'label': 'South Carolina', 'value': 'South Carolina'},
-                    {'label': 'South Dakota', 'value': 'South Dakota'},
-                    {'label': 'Tennessee', 'value': 'Tennessee'},
-                    {'label': 'Texas', 'value': 'Texas'},
-                    {'label': 'Utah', 'value': 'Utah'},
-                    {'label': 'Vermont', 'value': 'Vermont'},
-                    {'label': 'Virginia', 'value': 'Virginia'},
-                    {'label': 'Washington', 'value': 'Washington'},
-                    {'label': 'West Virginia', 'value': 'West Virginia'},
-                    {'label': 'Wisconsin', 'value': 'Wisconsin'},
-                    {'label': 'Wyoming', 'value': 'Wyoming'},
-                    ],
-                    
+                    {'label': st, 'value': st} for st in states],
                     multi=False,
                     value='none',
-                    style={'width': '40%'}
+                    style={'width': '35%'}
                     ),
     html.Div(id='output_container', children=[]),
     html.Br(),
@@ -118,8 +75,11 @@ children=[
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
-
-    container = "The state chosen by user was {}".format(option_slctd)
+    container = f"The state chosen by user was {option_slctd}"
+    for st in states: 
+        if option_slctd == st:
+            container = f"The state chosen by user was {option_slctd}"
+    # container = "The state chosen by user was {}".format(option_slctd)
     # fig = px.choropleth(
     #     data_frame=state_consumption_df,
     #     locationmode='USA-states',
