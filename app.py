@@ -44,7 +44,6 @@ children=[
     html.Br(),
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
     html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
-    #html.Div(' The company was founded by Joseph Chica, Colin McNeil, Willis Reid, and Duy Minh Pham', style={'font-size':'120%', 'color':'#2b2b2b'}),
     html.Br(),
     html.Br(),
     html.H3('Hover over the map to see data for each state, or select a State below:', style={'color': '#2b2b2b'}),
@@ -58,7 +57,10 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px'}),
+    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px', 'vertical-align':'top'}),
+    html.Div(id='state info', hidden=[], children=[]),
+    html.Br(),
+    html.Br(),
     dcc.Graph(id='usmap', figure={}),
     dcc.Graph(id='graph1', 
               figure={
@@ -73,13 +75,17 @@ children=[
     [Output(component_id='output_container', component_property='children'),
     Output(component_id='usmap', component_property='figure'),
     Output(component_id='selected_state', component_property='src'),
-    Output(component_id='selected_state', component_property='hidden')],
+    Output(component_id='selected_state', component_property='hidden'),
+    Output(component_id='state info', component_property='hidden'),
+    Output(component_id='state info', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
-    hide=True
+    hide_state=True
+    hide_info=True
     container = f"The state chosen by user was {option_slctd}"
     pictureOfState = f'{option_slctd}.png'
+    information = f'State: {option_slctd};'
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
@@ -87,7 +93,8 @@ def update_map(option_slctd):
             state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
             fig = ''
             pictureOfState = app.get_asset_url(f'{option_slctd}.png')
-            hide=False
+            hide_state=False
+            hide_info=False
 
     # container = "The state chosen by user was {}".format(option_slctd)
     # fig = px.choropleth(
@@ -116,7 +123,7 @@ def update_map(option_slctd):
         geo_scope='usa',
     )
 
-    return container, fig, pictureOfState, hide
+    return container, fig, pictureOfState, hide_state, hide_info, information
 
 
 
