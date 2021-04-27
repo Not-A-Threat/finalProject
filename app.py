@@ -57,7 +57,7 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'350px'}),
+    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px'}),
     dcc.Graph(id='usmap', figure={}),
     dcc.Graph(id='graph1', 
               figure={
