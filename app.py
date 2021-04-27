@@ -32,6 +32,7 @@ data_multiline = [trace1_multiline, trace2_multiline]
 app = dash.Dash(__name__)
 server = app.server
 
+app.title = 'Future Energy'
 
 #html layout of the page
 app.layout = html.Div(style={
