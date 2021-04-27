@@ -78,14 +78,14 @@ children=[
 def update_map(option_slctd):
     hide=True
     container = f"The state chosen by user was {option_slctd}"
-    pictureOfState = f'{option_slctd}.jpg'
+    pictureOfState = f'{option_slctd}.png'
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
             state_consumption_df_copy = state_consumption_df.copy()
             state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
             fig = ''
-            pictureOfState = app.get_asset_url(f'{option_slctd}.jpg')
+            pictureOfState = app.get_asset_url(f'{option_slctd}.png')
             hide=False
 
     # container = "The state chosen by user was {}".format(option_slctd)
