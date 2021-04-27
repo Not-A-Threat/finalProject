@@ -57,9 +57,8 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-
+    html.Img(id='selected_state', src=[], style={'width':'300px', 'height':'400px'}),
     dcc.Graph(id='usmap', figure={}),
-
     dcc.Graph(id='graph1', 
               figure={
                   'data': data_multiline,
@@ -71,14 +70,21 @@ children=[
 
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
-    Output(component_id='usmap', component_property='figure')],
+    Output(component_id='usmap', component_property='figure'),
+    Output(component_id='selected_state', component_property='src')],
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
     container = f"The state chosen by user was {option_slctd}"
+    pictureOfState = f'{option_slctd}.jpg'
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
+            state_consumption_df_copy = state_consumption_df.copy()
+            state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
+            fig = ''
+            pictureOfState = app.get_asset_url(f'{option_slctd}.jpg')
+
     # container = "The state chosen by user was {}".format(option_slctd)
     # fig = px.choropleth(
     #     data_frame=state_consumption_df,
@@ -106,7 +112,7 @@ def update_map(option_slctd):
         geo_scope='usa',
     )
 
-    return container, fig
+    return container, fig, pictureOfState
 
 
 
