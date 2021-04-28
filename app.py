@@ -63,8 +63,10 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px', 'display':'inline-block', 'vertical-align':'top'}),
-    html.Div(id='state info', hidden=[], children=[], style={'display':'inline-block'}),
+    html.Div([
+        html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px'})
+    ], style={'textAlign':'center', 'vertical-align':'top'}),
+    html.Div(id='state info', hidden=[], children=[]),
     html.Br(),
     html.Br(),
     dcc.Graph(id='usmap', figure={}),
