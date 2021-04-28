@@ -27,6 +27,7 @@ states = sorted(states)
 #creating consumption list
 consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
 consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
+consumption = [i.strip(' ') for i in consumption]
 
 
 #making lines for the multiline chart
@@ -63,10 +64,10 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-    html.Div([
-        html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px'})
-    ], style={'textAlign':'center', 'vertical-align':'top'}),
-    html.Div(id='state info', hidden=[], children=[]),
+    html.Div(id='selected_state', children=[
+        html.Img(id='state_img', src=[]),
+        html.H2(id='state name', children=[])
+    ], style={'textAlign':'center'}, hidden=[]),
     html.Br(),
     html.Br(),
     dcc.Graph(id='usmap', figure={}),
@@ -82,10 +83,9 @@ children=[
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
     Output(component_id='usmap', component_property='figure'),
-    Output(component_id='selected_state', component_property='src'),
+    Output(component_id='state_img', component_property='src'),
     Output(component_id='selected_state', component_property='hidden'),
-    Output(component_id='state info', component_property='hidden'),
-    Output(component_id='state info', component_property='children')],
+    Output(component_id='state name', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
@@ -103,18 +103,6 @@ def update_map(option_slctd):
             pictureOfState = app.get_asset_url(f'{option_slctd}.png')
             hide_state=False
             hide_info=False
-
-    # container = "The state chosen by user was {}".format(option_slctd)
-    # fig = px.choropleth(
-    #     data_frame=state_consumption_df,
-    #     locationmode='USA-states',
-    #     locations='Code',
-    #     scope="usa",
-    #     color='Consumption per Capita',
-    #     hover_data=['State','Consumption', 'Consumption per Capita'],
-    #     labels={'Consumption': 'Consumption'},
-    #     template='presentation'
-    # )
 
     fig = go.Figure(
         data=[go.Choropleth(
