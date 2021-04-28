@@ -36,9 +36,11 @@ trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fos
 trace2_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Renewable Energy Production'], mode='lines', name='Renewable Energy Production')
 data_multiline = [trace1_multiline, trace2_multiline]
 
+#starts the app
 app = dash.Dash(__name__)
 server = app.server
 
+#website title
 app.title = 'Future Energy'
 
 #html layout of the page
@@ -46,24 +48,33 @@ app.layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")'
 },
 children=[
+    #title on the page
     html.H1(children='Team Not a Threat',
             style={'textAlign': 'center', 'color': '#1f1f1f'}),
     html.Br(),
+
+    #A quick about us section
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
     html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.Br(),
     html.Br(),
+
+    #Dropdown option to select a state
     html.H3('Hover over the map to see data for each state, or select a State below:', style={'color': '#2b2b2b'}),
     dcc.Dropdown(id='slct_state',
                 options=[
+                    #loops through states list and adds them to the dropdown
                     {'label': st, 'value': st} for st in states],
                     multi=False,
                     value='none',
                     style={'width': '35%'}
                     ),
+
+    #will state what state the user has selected                
     html.Div(id='output_container', children=[]),
     html.Br(),
-    #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
+
+    #once a user selects a state, the hidden[] option will become false, and show all of this information(state image, consumption, consumption per capita)
     html.Div(id='selected state', children=[
         html.Img(id='state img', src=[]),
         html.H2(id='state name', children=[]),
@@ -71,6 +82,8 @@ children=[
     ], style={'textAlign':'center'}, hidden=[]),
     html.Br(),
     html.Br(),
+
+    #graph that 
     dcc.Graph(id='usmap', figure={}),
     dcc.Graph(id='graph1', 
               figure={
@@ -81,6 +94,7 @@ children=[
     }),
 ])
 
+#updates the map anytime a user selects a different state
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
     Output(component_id='usmap', component_property='figure'),
@@ -90,6 +104,8 @@ children=[
     Output(component_id='state consumption', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
 )
+
+
 def update_map(option_slctd):
     hide_state=True
     container = f"The state chosen by user was {option_slctd}"
