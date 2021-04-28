@@ -93,7 +93,7 @@ def update_map(option_slctd):
     hide_info=True
     container = f"The state chosen by user was {option_slctd}"
     pictureOfState = f'{option_slctd}.png'
-    information = f'State: {option_slctd};'
+    state_name = f'State: {option_slctd};'
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
@@ -119,7 +119,7 @@ def update_map(option_slctd):
         geo_scope='usa',
     )
 
-    return container, fig, pictureOfState, hide_state, hide_info, information
+    return container, fig, pictureOfState, hide_state, state_name
 
 
 
