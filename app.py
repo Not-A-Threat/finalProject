@@ -17,10 +17,16 @@ multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
 #creates a 'text' field of parts of the state consumption data frame
 state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + ' Consumption per Capita: ' + state_consumption_df['Consumption per Capita']
+
+#creating states list
 states = state_consumption_df.loc['0':, 'State'].values.tolist()
-states=[unicodedata.normalize('NFKD', word) for word in states]
+states = [unicodedata.normalize('NFKD', word) for word in states]
 states = [x.strip(' ') for x in states]
 states = sorted(states)
+
+#creating consumption list
+consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
+consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
 
 
 #making lines for the multiline chart
@@ -57,8 +63,8 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px', 'vertical-align':'top'}),
-    html.Div(id='state info', hidden=[], children=[]),
+    html.Img(id='selected_state', src=[], hidden=[], style={'width':'250px', 'height':'450px', 'display':'inline-block', 'vertical-align':'top'}),
+    html.Div(id='state info', hidden=[], children=[], style={'display':'inline-block'}),
     html.Br(),
     html.Br(),
     dcc.Graph(id='usmap', figure={}),
