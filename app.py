@@ -64,9 +64,10 @@ children=[
     html.Div(id='output_container', children=[]),
     html.Br(),
     #html.Iframe(id='usmap', src="https://createaclickablemap.com/map.php?&id=102341&maplocation=false&online=true", width='1200', height='700'),
-    html.Div(id='selected_state', children=[
-        html.Img(id='state_img', src=[]),
-        html.H2(id='state name', children=[])
+    html.Div(id='selected state', children=[
+        html.Img(id='state img', src=[]),
+        html.H2(id='state name', children=[]),
+        html.H2(id='state consumption', children=[])
     ], style={'textAlign':'center'}, hidden=[]),
     html.Br(),
     html.Br(),
@@ -83,26 +84,27 @@ children=[
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
     Output(component_id='usmap', component_property='figure'),
-    Output(component_id='state_img', component_property='src'),
-    Output(component_id='selected_state', component_property='hidden'),
-    Output(component_id='state name', component_property='children')],
+    Output(component_id='state img', component_property='src'),
+    Output(component_id='selected state', component_property='hidden'),
+    Output(component_id='state name', component_property='children'),
+    Output(component_id='state consumption', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
     hide_state=True
-    hide_info=True
     container = f"The state chosen by user was {option_slctd}"
     pictureOfState = f'{option_slctd}.png'
-    state_name = f'State: {option_slctd};'
+    state_name = f'State: {option_slctd}'
+    state_consume = f'Total Consumption (in quadrillion Btu): '
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
             state_consumption_df_copy = state_consumption_df.copy()
             state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
-            fig = ''
             pictureOfState = app.get_asset_url(f'{option_slctd}.png')
+            index = states.index(f'{option_slctd}')
+            state_consume += consumption[index]
             hide_state=False
-            hide_info=False
 
     fig = go.Figure(
         data=[go.Choropleth(
@@ -119,7 +121,7 @@ def update_map(option_slctd):
         geo_scope='usa',
     )
 
-    return container, fig, pictureOfState, hide_state, state_name
+    return container, fig, pictureOfState, hide_state, state_name, state_consume
 
 
 
