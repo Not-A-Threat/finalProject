@@ -83,8 +83,10 @@ children=[
     html.Br(),
     html.Br(),
 
-    #graph that 
+    #graph that shows the us map with data
     dcc.Graph(id='usmap', figure={}),
+
+    #graph that shows production of renewable resources vs fossil fuels
     dcc.Graph(id='graph1', 
               figure={
                   'data': data_multiline,
@@ -92,6 +94,10 @@ children=[
                       title='Fossil Fuel production vs Renewable Energy production',
                       xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'})       
     }),
+
+    html.Br(),
+    html.H2("For more information on how to help follow these links: ")
+   
 ])
 
 #updates the map anytime a user selects a different state
@@ -107,11 +113,14 @@ children=[
 
 
 def update_map(option_slctd):
+    #setting all my variables to their original value
     hide_state=True
     container = f"The state chosen by user was {option_slctd}"
     pictureOfState = f'{option_slctd}.png'
     state_name = f'State: {option_slctd}'
     state_consume = f'Total Consumption (in quadrillion Btu): '
+
+    #once a state is chosen that is in the State list information is grabbed from that state, and revealed
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
@@ -122,6 +131,7 @@ def update_map(option_slctd):
             state_consume += consumption[index]
             hide_state=False
 
+    #US Map with data
     fig = go.Figure(
         data=[go.Choropleth(
             locationmode='USA-states',
@@ -133,6 +143,8 @@ def update_map(option_slctd):
             text=state_consumption_df['text'],
         )]
     )
+
+    #to focus on just US
     fig.update_layout(
         geo_scope='usa',
     )
