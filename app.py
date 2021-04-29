@@ -46,6 +46,7 @@ sideMenu = html.Div([
     html.Hr(),
     dbc.Nav([
         dbc.NavLink('Home', href='/', active='exact'),
+        html.Br(),
         dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
     ],
     vertical=True,
@@ -109,10 +110,10 @@ index_page = html.Div(style={
 ])
 
 page_1_layout = html.Div(style={
-    'background-image':'url("/assets/green-gradient.svg")'
+    'background-image':'url("/assets/green-gradient.svg")',
+    "margin-left": "15rem",
+    "padding": "2rem 1rem",
     }, children=[
-        dcc.Link('Homepage', href='/'),
-        html.Div("Title"),
         dcc.Graph(id='graph1', 
               figure={
                   'data': data_multiline,
@@ -120,6 +121,8 @@ page_1_layout = html.Div(style={
                       title='Fossil Fuel production vs Renewable Energy production',
                       xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'})  
                 }),
+        html.Br(),
+        html.Br(),
 ])
 
 #updates the map anytime a user selects a different state
@@ -172,8 +175,8 @@ def update_map(option_slctd):
     return container, fig, pictureOfState, hide_state, state_name, state_consume
 
 #update index
-@app.callback(dash.dependencies.Output('page-content', 'children'),
-[dash.dependencies.Input('url', 'pathname')])
+@app.callback(Output(component_id='page-content', component_property='children'),
+[Input(component_id='url', component_property='pathname')])
 def display_page(pathname):
     if pathname =='/page-1':
         return page_1_layout
