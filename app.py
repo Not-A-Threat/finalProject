@@ -133,14 +133,20 @@ page_2_layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")',
     "margin-left": "15rem",
     "padding": "2rem 1rem",
-    "Since the growth of solar in the United States industry, it has helped pave the way to cleaner energy. Over the last couple of years, the cost of solar energy has reduced making it more affordable for American families and businesses to afford solar energy."
 }, children=[
     html.H1('Want to do your part in helping? These following links have more information:'),
     html.Hr(),
     dcc.Link("Since the growth of solar in the United States industry, it has helped pave the way to cleaner energy. Over the last couple of years, the cost of solar energy has reduced making it more affordable for American families and businesses to afford solar energy.", href="https://www.energy.gov/science-innovation/energy-sources/renewable-energy/solar"),
+    html.Br(),
+    html.Br(),
     dcc.Link("The United States is home to one of the largest and fastest-growing wind markets in the world. The Energy Department invests in different researchers and development projects both on land and offshore. All these different investments show that The Department of Energy is taking steps to cut carbon pollution.", href="https://www.energy.gov/science-innovation/energy-sources/renewable-energy/wind "),
+    html.Br(),
+    html.Br(),
     dcc.Link("American has a vast wave of tidal and hydropower resources, but a lot of this energy remains untouched. Simply because we do not have enough money back in it or enough research, The Energy Department is researching and developing efforts to expand electricity generation from these clean energy resources.", href="https://www.energy.gov/science-innovation/energy-sources/renewable-energy/water"),
+    html.Br(),
+    html.Br(),
     dcc.Link("The local government can reduce the carbon footprint by directly passing strict laws like in California. To where you most have zero-emission vehicles by the year 2035 or generating electricity from clean, renewable sources.", href="https://www.epa.gov/statelocalenergy/local-renewable-energy-benefits-and-resources "),
+    html.Br(),
     html.Br(),
 ])
 
