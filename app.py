@@ -92,9 +92,10 @@ index_page = html.Div(style={
     dcc.Graph(id='usmap', figure={}),
 ])
 
-page_1_layout = html.Div(style={
+multilinegraph_layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")'
     }, children=[
+        dcc.Link('Homepage', href='/'),
         html.Div("Title"),
         dcc.Graph(id='graph1', 
               figure={
@@ -159,7 +160,7 @@ def update_map(option_slctd):
 [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
     if pathname =='/page-1':
-        return page_1_layout
+        return multilinegraph_layout
     else:
         return index_page
 
