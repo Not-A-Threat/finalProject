@@ -147,7 +147,7 @@ page_2_layout = html.Div(style={
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/Solar_panels.png', style={'width':'70%', 'height':'70%'}
+            src='/assets/Solar_Panels.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/solar'
     ),
     html.Br(),
