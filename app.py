@@ -85,20 +85,7 @@ children=[
 
     #graph that shows the us map with data
     dcc.Graph(id='usmap', figure={}),
-
-    #graph that shows production of renewable resources vs fossil fuels
-    dcc.Graph(id='graph1', 
-              figure={
-                  'data': data_multiline,
-                  'layout': go.Layout(
-                      title='Fossil Fuel production vs Renewable Energy production',
-                      xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'})       
-    }),
-
-    html.Br(),
-    html.H2("For more information on how to help follow these links: ")
     
-   
 ])
 
 #updates the map anytime a user selects a different state
