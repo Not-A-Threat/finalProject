@@ -50,12 +50,11 @@ sideMenu = html.Div([
         dbc.NavLink('Home', href='/', active='exact'),
         html.Br(),
         html.Br(),
-        dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
+        dbc.NavLink('Multi-Line Graph', href='/page-1', active='exact'),
         html.Br(),
         html.Br(),
         dbc.NavLink('How to Help', href='/page-2', active='exact'),
     ],
-    vertical=True,
     pills=True,
     ),
 ], className='navBar')
@@ -78,7 +77,7 @@ index_page = html.Div(style={
     }, children=[
     #title on the page
     html.H1(children='Team Not a Threat',
-            style={'textAlign': 'center', 'color': '#1f1f1f'}),
+            style={'textAlign': 'center', 'color': '#1f1f1f', }),
     html.Br(),
     html.Br(),
     #A quick about us section
@@ -161,7 +160,7 @@ page_2_layout = html.Div(style={
     ),
     html.Br(),
     html.Hr(),
-    html.H3('American has a vast wave of tidal and hydropower resources, but a lot of this energy remains untouched. Simply because we do not have enough money back in it or enough research, The Energy Department is researching and developing efforts to expand electricity generation from these clean energy resources.'),
+    html.H3('America has a vast wave of tidal and hydropower resources, but a lot of this energy remains untouched. The Energy Department is researching new ways to expand electricity generation from this clean, bountiful resource.'),
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
@@ -170,7 +169,7 @@ page_2_layout = html.Div(style={
     ),
     html.Br(),
     html.Hr(),
-    html.H3('The local government can reduce the carbon footprint by directly passing strict laws like in California. To where you most have zero-emission vehicles by the year 2035 or generating electricity from clean, renewable sources.'),
+    html.H3('The local government can reduce the carbon footprint by directly passing strict laws. For example, only zero-emission vehicles will be sold in California after the year 2035'),
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
