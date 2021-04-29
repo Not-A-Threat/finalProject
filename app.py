@@ -41,6 +41,7 @@ data_multiline = [trace1_multiline, trace2_multiline]
 app = dash.Dash(__name__)
 server = app.server
 
+#Navigation bar will be used on each page. 
 sideMenu = html.Div([
     html.H2('Menu'),
     html.Hr(),
@@ -48,6 +49,8 @@ sideMenu = html.Div([
         dbc.NavLink('Home', href='/', active='exact'),
         html.Br(),
         dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
+        html.Br(),
+        dbc.NavLink('Page 2', href='/page-2', active='exact'),
     ],
     vertical=True,
     pills=True,
@@ -125,6 +128,16 @@ page_1_layout = html.Div(style={
         html.Br(),
 ])
 
+page_2_layout = html.Div(style={
+    'background-image':'url("/assets/green-gradient.svg")',
+    "margin-left": "15rem",
+    "padding": "2rem 1rem",
+}, children=[
+    html.H1('Want to do your part in helping? These following links have more information:'),
+    html.Hr(),
+    html.Br(),
+])
+
 #updates the map anytime a user selects a different state
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
@@ -180,9 +193,17 @@ def update_map(option_slctd):
 def display_page(pathname):
     if pathname =='/page-1':
         return page_1_layout
-    else:
+    elif pathname =='/page-2':
+        return page_2_layout
+    elif pathname =='/':
         return index_page
-
+    else:
+        return dbc.Jumbotron(
+            [   html.H1('404: Not Found', style={"margin-left": "15rem", "padding": "2rem 1rem",}),
+                html.Hr(),
+                html.P(f'Pathname: {pathname} was not recognized', style={"margin-left": "15rem", "padding": "2rem 1rem",}),
+            ]
+        )
 
 if __name__ == '__main__':
     app.run_server()
