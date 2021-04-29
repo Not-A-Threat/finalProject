@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import pandas as pd 
 import plotly.graph_objs as go 
@@ -40,27 +41,51 @@ data_multiline = [trace1_multiline, trace2_multiline]
 app = dash.Dash(__name__)
 server = app.server
 
+sideMenu = html.Div([
+    html.H2('Menu'),
+    html.Hr(),
+    html.P('links'),
+    dbc.Nav([
+        dbc.NavLink('Home', href='/', active='exact'),
+        dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
+    ],
+    vertical=True,
+    pills=True,
+    ),
+], style={ 
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "16rem",
+    "padding": "2rem 1rem",
+    "background-color": "#AEE1A6",})
+
 #website title
 app.title = 'Future Energy'
 
 #html layout of the homepage
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
+    sideMenu,
     html.Div(id='page-content')
 ])
 
 index_page = html.Div(style={
-    'background-image':'url("/assets/green-gradient.svg")'
+    'background-image':'url("/assets/green-gradient.svg")',
+    "margin-left": "18rem",
+    "margin-right": "2rem",
+    "padding": "2rem 1rem",
     }, children=[
     #title on the page
     html.H1(children='Team Not a Threat',
             style={'textAlign': 'center', 'color': '#1f1f1f'}),
     html.Br(),
-    dcc.Link('Go to Page 1', href='/page-1'),
     html.Br(),
     #A quick about us section
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
-    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
+    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy.', style={'textAlign':'center', 'color':'#2b2b2b'}),
+    html.H3('Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.Br(),
     html.Br(),
 
@@ -92,7 +117,7 @@ index_page = html.Div(style={
     dcc.Graph(id='usmap', figure={}),
 ])
 
-multilinegraph_layout = html.Div(style={
+page_1_layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")'
     }, children=[
         dcc.Link('Homepage', href='/'),
@@ -160,7 +185,7 @@ def update_map(option_slctd):
 [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
     if pathname =='/page-1':
-        return multilinegraph_layout
+        return page_1_layout
     else:
         return index_page
 
