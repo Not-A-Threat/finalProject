@@ -49,7 +49,9 @@ sideMenu = html.Div([
     dbc.Nav([
         dbc.NavLink('Home', href='/', active='exact'),
         html.Br(),
+        html.Br(),
         dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
+        html.Br(),
         html.Br(),
         dbc.NavLink('Page 2', href='/page-2', active='exact'),
     ],
