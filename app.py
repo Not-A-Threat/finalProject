@@ -43,7 +43,7 @@ server = app.server
 #website title
 app.title = 'Future Energy'
 
-#html layout of the page
+#html layout of the homepage
 app.layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")'
 },
@@ -97,6 +97,7 @@ children=[
 
     html.Br(),
     html.H2("For more information on how to help follow these links: ")
+    
    
 ])
 
