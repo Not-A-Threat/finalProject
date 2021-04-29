@@ -130,7 +130,6 @@ page_1_layout = html.Div(style={
 ])
 
 page_2_layout = html.Div(style={
-    'background-image':'url("/assets/green-gradient.svg")',
     "margin-left": "15rem",
     "padding": "2rem 1rem",
 }, children=[
