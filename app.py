@@ -44,7 +44,6 @@ server = app.server
 sideMenu = html.Div([
     html.H2('Menu'),
     html.Hr(),
-    html.P('links'),
     dbc.Nav([
         dbc.NavLink('Home', href='/', active='exact'),
         dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
@@ -66,8 +65,7 @@ app.layout = html.Div([
 
 index_page = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")',
-    "margin-left": "18rem",
-    "margin-right": "2rem",
+    "margin-left": "15rem",
     "padding": "2rem 1rem",
     }, children=[
     #title on the page
