@@ -120,6 +120,8 @@ page_1_layout = html.Div(style={
     "margin-left": "15rem",
     "padding": "2rem 1rem",
     }, children=[
+        html.H1('Here is the production of Fossil fuels compared to Renewable energy.', style={'textAlign':'center'}),
+        html.H2('As you can tell, fossil fuels has steadily climbed up since the start of 2010, while renewable energy barely has gone up since the 1970s', style={'textAlign':'center'}),
         dcc.Graph(id='graph1', 
               figure={
                   'data': data_multiline,
