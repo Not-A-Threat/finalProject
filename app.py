@@ -131,6 +131,7 @@ page_1_layout = html.Div(style={
                 }),
         html.Br(),
         html.Br(),
+        html.Hr(),
 ])
 
 page_2_layout = html.Div(style={
@@ -146,7 +147,7 @@ page_2_layout = html.Div(style={
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/solar'
     ),
     html.Br(),
-    html.Br(),
+    html.Hr(),
     html.H3('The United States is home to one of the largest and fastest-growing wind markets in the world. The Energy Department invests in different researchers and development projects both on land and offshore. All these different investments show that The Department of Energy is taking steps to cut carbon pollution.'),
     html.A([
         html.Img(
@@ -154,7 +155,7 @@ page_2_layout = html.Div(style={
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/wind'
     ),
     html.Br(),
-    html.Br(),
+    html.Hr(),
     html.H3('American has a vast wave of tidal and hydropower resources, but a lot of this energy remains untouched. Simply because we do not have enough money back in it or enough research, The Energy Department is researching and developing efforts to expand electricity generation from these clean energy resources.'),
     html.A([
         html.Img(
@@ -162,7 +163,7 @@ page_2_layout = html.Div(style={
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/water'
     ),
     html.Br(),
-    html.Br(),
+    html.Hr(),
     html.H3('The local government can reduce the carbon footprint by directly passing strict laws like in California. To where you most have zero-emission vehicles by the year 2035 or generating electricity from clean, renewable sources.'),
     html.A([
         html.Img(
@@ -170,7 +171,7 @@ page_2_layout = html.Div(style={
         )], href='https://www.epa.gov/statelocalenergy/local-renewable-energy-benefits-and-resources'
     ),
     html.Br(),
-    html.Br(),
+    html.Hr(),
 ])
 
 #updates the map anytime a user selects a different state
