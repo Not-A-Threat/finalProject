@@ -53,7 +53,7 @@ sideMenu = html.Div([
         dbc.NavLink('MultiLine Graph', href='/page-1', active='exact'),
         html.Br(),
         html.Br(),
-        dbc.NavLink('Page 2', href='/page-2', active='exact'),
+        dbc.NavLink('How to Help', href='/page-2', active='exact'),
     ],
     vertical=True,
     pills=True,
@@ -138,10 +138,15 @@ page_2_layout = html.Div(style={
     html.H1('Want to do your part in helping? These following links have more information:'),
     html.Hr(),
     html.H3('Since the growth of solar in the United States industry, it has helped pave the way to cleaner energy. Over the last couple of years, the cost of solar energy has reduced making it more affordable for American families and businesses to afford solar energy.'),
-    dcc.Link('Link 1', href="https://www.energy.gov/science-innovation/energy-sources/renewable-energy/solar"),
+    html.A([
+        html.Img(
+            src='/assets/Solar Energy.png'
+        )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/solar'
+    ),
     html.Br(),
     html.Br(),
     html.H3('The United States is home to one of the largest and fastest-growing wind markets in the world. The Energy Department invests in different researchers and development projects both on land and offshore. All these different investments show that The Department of Energy is taking steps to cut carbon pollution.'),
+    
     dcc.Link('Link 2', href="https://www.energy.gov/science-innovation/energy-sources/renewable-energy/wind "),
     html.Br(),
     html.Br(),
