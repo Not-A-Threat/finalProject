@@ -44,15 +44,20 @@ server = app.server
 app.title = 'Future Energy'
 
 #html layout of the homepage
-app.layout = html.Div(style={
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content')
+])
+
+index_page = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")'
-},
-children=[
+    }, children=[
     #title on the page
     html.H1(children='Team Not a Threat',
             style={'textAlign': 'center', 'color': '#1f1f1f'}),
     html.Br(),
-
+    dcc.Link('Go to Page 1', href='/page-1'),
+    html.Br(),
     #A quick about us section
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
     html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy. Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
@@ -85,7 +90,19 @@ children=[
 
     #graph that shows the us map with data
     dcc.Graph(id='usmap', figure={}),
-    
+])
+
+page_1_layout = html.Div(style={
+    'background-image':'url("/assets/green-gradient.svg")'
+    }, children=[
+        html.Div("Title"),
+        dcc.Graph(id='graph1', 
+              figure={
+                  'data': data_multiline,
+                  'layout': go.Layout(
+                      title='Fossil Fuel production vs Renewable Energy production',
+                      xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'})  
+                }),
 ])
 
 #updates the map anytime a user selects a different state
@@ -98,8 +115,6 @@ children=[
     Output(component_id='state consumption', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
 )
-
-
 def update_map(option_slctd):
     #setting all my variables to their original value
     hide_state=True
@@ -139,6 +154,14 @@ def update_map(option_slctd):
 
     return container, fig, pictureOfState, hide_state, state_name, state_consume
 
+#update index
+@app.callback(dash.dependencies.Output('page-content', 'children'),
+[dash.dependencies.Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname =='/page-1':
+        return page_1_layout
+    else:
+        return index_page
 
 
 if __name__ == '__main__':
