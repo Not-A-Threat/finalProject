@@ -70,6 +70,7 @@ app.layout = html.Div([
     html.Div(id='page-content')
 ])
 
+#homepage layout
 index_page = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")',
     "margin-left": "15rem",
@@ -115,6 +116,7 @@ index_page = html.Div(style={
     dcc.Graph(id='usmap', figure={}),
 ])
 
+#multigraph layout
 page_1_layout = html.Div(style={
     'background-image':'url("/assets/green-gradient.svg")',
     "margin-left": "15rem",
@@ -134,6 +136,7 @@ page_1_layout = html.Div(style={
         html.Hr(),
 ])
 
+#links page
 page_2_layout = html.Div(style={
     "margin-left": "15rem",
     "padding": "2rem 1rem",
@@ -141,33 +144,37 @@ page_2_layout = html.Div(style={
     html.H1('Want to do your part in helping? These following links have more information:'),
     html.Hr(),
     html.H3('Since the growth of solar in the United States industry, it has helped pave the way to cleaner energy. Over the last couple of years, the cost of solar energy has reduced making it more affordable for American families and businesses to afford solar energy.'),
+    html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/green_energy.jpg'
+            src='/assets/green_energy.jpg', style={'width':'70%', 'height':'70%'}
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/solar'
     ),
     html.Br(),
     html.Hr(),
     html.H3('The United States is home to one of the largest and fastest-growing wind markets in the world. The Energy Department invests in different researchers and development projects both on land and offshore. All these different investments show that The Department of Energy is taking steps to cut carbon pollution.'),
+    html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/Wind Energy.png'
+            src='/assets/Wind Energy.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/wind'
     ),
     html.Br(),
     html.Hr(),
     html.H3('American has a vast wave of tidal and hydropower resources, but a lot of this energy remains untouched. Simply because we do not have enough money back in it or enough research, The Energy Department is researching and developing efforts to expand electricity generation from these clean energy resources.'),
+    html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/water-energy.jpeg'
+            src='/assets/water-energy.jpeg', style={'width':'70%', 'height':'70%'}
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/water'
     ),
     html.Br(),
     html.Hr(),
     html.H3('The local government can reduce the carbon footprint by directly passing strict laws like in California. To where you most have zero-emission vehicles by the year 2035 or generating electricity from clean, renewable sources.'),
+    html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/gas-vs-electric.png'
+            src='/assets/gas-vs-electric.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.epa.gov/statelocalenergy/local-renewable-energy-benefits-and-resources'
     ),
     html.Br(),
@@ -220,7 +227,6 @@ def update_map(option_slctd):
     fig.update_layout(
         geo_scope='usa',
     )
-
     return container, fig, pictureOfState, hide_state, state_name, state_consume
 
 #update index
