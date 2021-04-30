@@ -18,7 +18,7 @@ state_consumption_df = pd.read_csv(cwd + '/Datasets/State_Energy_Consumption.csv
 multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
 #creates a 'text' field of parts of the state consumption data frame
-state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + ' Consumption per Capita: ' + state_consumption_df['Consumption per Capita']
+state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + 'Consumption per Capita: ' + state_consumption_df['Consumption p Capita']
 
 #creating states list
 states = state_consumption_df.loc['0':, 'State'].values.tolist()
@@ -31,11 +31,10 @@ consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
 consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
 consumption = [i.strip(' ') for i in consumption]
 
-
 #making lines for the multiline chart
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
-trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fossil Fuels Production'], mode='lines', name='Fossil Fuel Production')
-trace2_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Renewable Energy Production'], mode='lines', name='Renewable Energy Production')
+trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fossil Fuels Production'], mode='lines', name='Fossil Fuel Production', line_color='black')
+trace2_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Renewable Energy Production'], mode='lines', name='Renewable Energy Production', line_color='green')
 data_multiline = [trace1_multiline, trace2_multiline]
 
 #starts the app
@@ -53,7 +52,7 @@ sideMenu = html.Div([
         dbc.NavLink('Multi-Line Graph', href='/page-1', active='exact'),
         html.Br(),
         html.Br(),
-        dbc.NavLink('How to Help', href='/page-2', active='exact'),
+        dbc.NavLink('Get involved', href='/page-2', active='exact'),
     ],
     ),
 ], className='navBar')
@@ -118,7 +117,7 @@ page_1_layout = html.Div(style={
     "margin-left": "15rem",
     "padding": "2rem 1rem",
     }, children=[
-        html.H1('Here is the production of Fossil fuels compared to Renewable energy.', style={'textAlign':'center'}),
+        html.H1('Fossil Fuels vs Renewable Energy', style={'textAlign':'center'}),
         html.H2('As you can tell, fossil fuels has steadily climbed up since the start of 2010, while renewable energy barely has gone up since the 1970s', style={'textAlign':'center'}),
         dcc.Graph(id='graph1', 
               figure={
@@ -199,8 +198,8 @@ def update_map(option_slctd):
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
-            state_consumption_df_copy = state_consumption_df.copy()
-            state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
+            # state_consumption_df_copy = state_consumption_df.copy()
+            # state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
             pictureOfState = app.get_asset_url(f'{option_slctd}.png')
             index = states.index(f'{option_slctd}')
             state_consume += consumption[index]
