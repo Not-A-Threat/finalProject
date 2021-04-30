@@ -55,7 +55,6 @@ sideMenu = html.Div([
         html.Br(),
         dbc.NavLink('How to Help', href='/page-2', active='exact'),
     ],
-    pills=True,
     ),
 ], className='navBar')
 
@@ -71,7 +70,6 @@ app.layout = html.Div([
 
 #homepage layout
 index_page = html.Div(style={
-    'background-image':'url("/assets/green-gradient.svg")',
     "margin-left": "15rem",
     "padding": "2rem 1rem",
     }, children=[
@@ -104,7 +102,7 @@ index_page = html.Div(style={
 
     #once a user selects a state, the hidden[] option will become false, and show all of this information(state image, consumption, consumption per capita)
     html.Div(id='selected state', children=[
-        html.Img(id='state img', src=[]),
+        html.Img(id='state img', src=[], style={'width':'20%', 'height':'20%'}),
         html.H2(id='state name', children=[]),
         html.H2(id='state consumption', children=[])
     ], style={'textAlign':'center'}, hidden=[]),
@@ -117,7 +115,6 @@ index_page = html.Div(style={
 
 #multigraph layout
 page_1_layout = html.Div(style={
-    'background-image':'url("/assets/green-gradient.svg")',
     "margin-left": "15rem",
     "padding": "2rem 1rem",
     }, children=[
