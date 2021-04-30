@@ -45,8 +45,8 @@ server = app.server
 topMenu = html.Header(role='banner', children=[
     html.Div([
         html.A('Home', href='/'),
-        html.A('Multi-Line Graph', href='/page-1'),
-        html.A('Get involved', href='/page-2'),
+        html.A('Energy Production Over Time', href='/page-1'),
+        html.A('Further Reading on Renewable Energy', href='/page-2'),
     ], className='topnav'),
 ])
 
@@ -58,10 +58,10 @@ sideMenu = html.Div([
         dbc.NavLink('Home', href='/', active='exact'),
         html.Br(),
         html.Br(),
-        dbc.NavLink('Multi-Line Graph', href='/page-1', active='exact'),
+        dbc.NavLink('Energy Production Over Time', href='/page-1', active='exact'),
         html.Br(),
         html.Br(),
-        dbc.NavLink('Get involved', href='/page-2', active='exact'),
+        dbc.NavLink('Further Reading on Renewable Energy', href='/page-2', active='exact'),
     ],
     ),
 ], className='navBar')
@@ -82,19 +82,23 @@ index_page = html.Div(style={
     "padding": "2rem 1rem",
     }, children=[
     #title on the page
-    html.H1('Team Not a Threat',
-            style={'textAlign': 'center', 'color': '#1f1f1f', }),
-    html.Br(),
+    html.H1('Future Energy Limited',
+            style={'textAlign': 'center', 'color': 'seagreen', }),
+    #1f1f1f
+    html.Hr(),
     html.Br(),
     #A quick about us section
+
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
-    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy.', style={'textAlign':'center', 'color':'#2b2b2b'}),
+#    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy.', style={'textAlign':'center', 'color':'#2b2b2b'}),
+    html.H3('Our mission at Future Energy is to spark conversations about renewable energy. The fossil fuels we currently depend on will reach critically low levels if we do not do something right now. Take a look at the data, gathered by experienced researchers. We live by our motto: "See the data, make the change.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.H3('Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.Br(),
-    html.Br(),
+    html.Hr(),
 
     #Dropdown option to select a state
-    html.H3('Hover over the map to see data for each state, or select a State below:', style={'color': '#2b2b2b'}),
+    html.H3('The following interactive US map displays how much non-renewable energy is consumed every year by each state in British thermal units (Btu). 1 Btu is about as much energy released by a burning match.', style={'color': '#2b2b2b'}),
+    html.H3('Hover over the map to see the amount of energy each state consumes, or select a state below: *', style={'color': '#2b2b2b'}),
     dcc.Dropdown(id='slct_state',
                 options=[
                     #loops through states list and adds them to the dropdown
@@ -119,6 +123,7 @@ index_page = html.Div(style={
 
     #graph that shows the us map with data
     dcc.Graph(id='usmap', figure={}),
+        html.H3('*Total consumption is measured in Trillion Btu. Consumption per Capita is measured in Million Btu.', style={'textAlign': 'center', 'color': '#2b2b2b'}),
 ])
 
 #multigraph layout
@@ -126,7 +131,7 @@ page_1_layout = html.Div(style={
     "margin-left": "2rem",
     "padding": "2rem 1rem",
     }, children=[
-        html.H1('Fossil Fuels vs Renewable Energy', style={'textAlign':'center'}),
+        html.H1('Fossil Fuels vs Renewable Energy', style={'textAlign':'center', 'color': 'seagreen'}),
         html.H2('As you can tell, fossil fuels has steadily climbed up since the start of 2010, while renewable energy barely has gone up since the 1970s', style={'textAlign':'center'}),
         dcc.Graph(id='graph1', 
               figure={
@@ -145,8 +150,9 @@ page_2_layout = html.Div(style={
     "margin-left": "1rem",
     "padding": "2rem 1rem",
 }, children=[
-    html.H1('Want to do your part in helping? These following links have more information:'),
+    html.H1('Further Reading On Renewable Resources', style={'textAlign':'center', 'color': 'seagreen'}),
     html.Hr(),
+    html.H3('SOLAR ENERGY'),
     html.H3('Since the growth of solar in the United States industry, it has helped pave the way to cleaner energy. Over the last couple of years, the cost of solar energy has reduced making it more affordable for American families and businesses to afford solar energy.'),
     html.H3('Click the image below to learn more:'),
     html.A([
@@ -156,6 +162,7 @@ page_2_layout = html.Div(style={
     ),
     html.Br(),
     html.Hr(),
+    html.H3('WIND POWER'),
     html.H3('The United States is home to one of the largest and fastest-growing wind markets in the world. The Energy Department invests in different researchers and development projects both on land and offshore. All these different investments show that The Department of Energy is taking steps to cut carbon pollution.'),
     html.H3('Click the image below to learn more:'),
     html.A([
@@ -165,6 +172,7 @@ page_2_layout = html.Div(style={
     ),
     html.Br(),
     html.Hr(),
+    html.H3('HYDROPOWER'),
     html.H3('America has a vast wave of tidal and hydropower resources, but a lot of this energy remains untouched. The Energy Department is researching new ways to expand electricity generation from this clean, bountiful resource.'),
     html.H3('Click the image below to learn more:'),
     html.A([
@@ -174,6 +182,7 @@ page_2_layout = html.Div(style={
     ),
     html.Br(),
     html.Hr(),
+    html.H3('WHAT CAN LOCAL GOVERMENT DO?'),
     html.H3('The local government can reduce the carbon footprint by directly passing strict laws. For example, only zero-emission vehicles will be sold in California after the year 2035'),
     html.H3('Click the image below to learn more:'),
     html.A([
