@@ -18,7 +18,7 @@ state_consumption_df = pd.read_csv(cwd + '/Datasets/State_Energy_Consumption.csv
 multiline_df = pd.read_excel(cwd + '/Datasets/Overall_Energy.xlsx')
 
 #creates a 'text' field of parts of the state consumption data frame
-state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + 'Consumption per Capita: ' + state_consumption_df['Consumption p Capita']
+state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consumption: ' + state_consumption_df['Consumption'] + '<br>' + 'Consumption per Capita: ' + state_consumption_df['Consumption per Capita']
 
 #creating states list
 states = state_consumption_df.loc['0':, 'State'].values.tolist()
@@ -73,7 +73,7 @@ index_page = html.Div(style={
     "padding": "2rem 1rem",
     }, children=[
     #title on the page
-    html.H1(children='Team Not a Threat',
+    html.H1('Team Not a Threat',
             style={'textAlign': 'center', 'color': '#1f1f1f', }),
     html.Br(),
     html.Br(),
