@@ -41,6 +41,15 @@ data_multiline = [trace1_multiline, trace2_multiline]
 app = dash.Dash(__name__)
 server = app.server
 
+#possible header
+topMenu = html.Header(role='banner', children=[
+    html.Div([
+        html.A('Home', href='/'),
+        html.A('Multi-Line Graph', href='/page-1'),
+        html.A('Get involved', href='/page-2'),
+    ], className='topnav'),
+])
+
 #Navigation bar will be used on each page. 
 sideMenu = html.Div([
     html.H2('Menu'),
@@ -63,13 +72,13 @@ app.title = 'Future Energy'
 #html layout of the homepage
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    sideMenu,
+    topMenu,
     html.Div(id='page-content')
 ])
 
 #homepage layout
 index_page = html.Div(style={
-    "margin-left": "15rem",
+    "margin-left": "1rem",
     "padding": "2rem 1rem",
     }, children=[
     #title on the page
@@ -114,7 +123,7 @@ index_page = html.Div(style={
 
 #multigraph layout
 page_1_layout = html.Div(style={
-    "margin-left": "15rem",
+    "margin-left": "2rem",
     "padding": "2rem 1rem",
     }, children=[
         html.H1('Fossil Fuels vs Renewable Energy', style={'textAlign':'center'}),
@@ -133,7 +142,7 @@ page_1_layout = html.Div(style={
 
 #links page
 page_2_layout = html.Div(style={
-    "margin-left": "15rem",
+    "margin-left": "1rem",
     "padding": "2rem 1rem",
 }, children=[
     html.H1('Want to do your part in helping? These following links have more information:'),
