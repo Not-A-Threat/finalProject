@@ -196,7 +196,7 @@ page_2_layout = html.Div(style={
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/electric cars.png', style={'width':'70%', 'height':'70%'}
+            src='/assets/Electric cars.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.epa.gov/statelocalenergy/local-renewable-energy-benefits-and-resources'
     ),
     html.Br(),
