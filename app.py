@@ -121,7 +121,7 @@ index_page = html.Div(style={
     #once a user selects a state, the hidden[] option will become false, and show all of this information(state image, consumption, consumption per capita)
     html.Div(id='hide container', children=[
         html.Div(id='selected state', children=[
-        html.Img(id='state img', src=[], style={'width':'30%', 'height':'30%', }),
+        html.Img(id='state img', src=[], style={'width':'25%', 'height':'25%', }),
         html.Div(children=[
             html.H2(id='state name', children=[]),
             html.H2(id='state consumption', children=[]),
