@@ -98,6 +98,7 @@ index_page = html.Div(style={
 #    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.H3('Our mission at Future Energy is to spark conversations about renewable energy. The fossil fuels we currently depend on will reach critically low levels if we do not do something right now. Take a look at the data, gathered by experienced researchers. We live by our motto: "See the data, make the change.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.H3('Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
+    html.H3('Created by Joseph Chica, Colin McNeil, Duy Minh, and Willis Reid'),
     html.Br(),
     html.Hr(),
 
