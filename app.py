@@ -176,7 +176,7 @@ page_2_layout = html.Div(style={
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/Wind Energy.png', style={'width':'70%', 'height':'70%'}
+            src='/assets/Wind Turbines.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/wind'
     ),
     html.Br(),
@@ -186,7 +186,7 @@ page_2_layout = html.Div(style={
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/Hydro_Energy.png', style={'width':'70%', 'height':'70%'}
+            src='/assets/Hydro Power.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.energy.gov/science-innovation/energy-sources/renewable-energy/water'
     ),
     html.Br(),
@@ -196,7 +196,7 @@ page_2_layout = html.Div(style={
     html.H3('Click the image below to learn more:'),
     html.A([
         html.Img(
-            src='/assets/gas-vs-electric.png', style={'width':'70%', 'height':'70%'}
+            src='/assets/electric cars.png', style={'width':'70%', 'height':'70%'}
         )], href='https://www.epa.gov/statelocalenergy/local-renewable-energy-benefits-and-resources'
     ),
     html.Br(),
