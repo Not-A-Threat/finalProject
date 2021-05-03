@@ -1,34 +1,34 @@
 ﻿Rank,Code,State,Consumption,Consumption per Capita,State per capita,Consumption p Capita,State,Expenditures,State,Expenditures,State,Price
-     1,TX,   Texas,11769.9,466.1,   Wyoming,   948.1,   Texas,"    137,532",   Alaska,"8,807",   Hawaii,30.75
-     2,CA,   California,7825.7,209.6,   Alaska,   898.5,   California,"    117,003",   Louisiana,"8,661",   Connecticut,25.63
-     3,FL,   Florida,4381.9,232.6,   Louisiana,   894.4,   New York,"      61,619",   Wyoming,"7,904",   Vermont,24.2
-     4,LA,   Louisiana,4065.4,894.4,   North Dakota,   712.6,   Florida,"      60,172",   North Dakota,"6,740",   New Hampshire,23.87
-     5,IL,   Illinois,3936.7,306.5,   Iowa,   489.3,   Pennsylvania,"      48,701",   Texas,"5,446",   Massachusetts,23.32
-     6,OH,   Ohio,3833.7,332.3,   Texas,   466.1,   Ohio,"      45,081",   Iowa,"4,841",   Rhode Island,23.12
-     7,PA,   Pennsylvania,3758.8,   295.6,   South Dakota,   464.9,   Illinois,"      44,989",   Maine,"4,746",   Delaware,22.95
-     8,NY,   New York,3728.4,   192.2,   Nebraska,   461.1,   Louisiana,"      39,369",   South Dakota,"4,651",   New York,22.91
-     9,GA,   Georgia,3155.7,   324.9,   Kentucky,   454.7,   New Jersey,"      37,362",   Montana,"4,610",   Maryland,22.48
-    10,IN,   Indiana,2871.1,442.3,   Indiana,   442.3,   Georgia,"      37,338",   Kentucky,"4,526",   Arizona,21.78
-    11,MI,   Michigan,2798.1,   283.3,   Oklahoma,   412.6,   Michigan,"      34,540",   Alabama,"4,494",   Florida,21.66
-    12,NC,   North Carolina,2705.2,   283.0,   Alabama,   409.5,   North Carolina,"      32,989",   Mississippi,"4,446",   New Jersey,20.91
-    13,VA,   Virginia,2502.1,   311.8,   Kansas,   407.6,   Virginia,"      29,826",   Nebraska,"4,421",   Nevada,20.87
-    14,NJ,   New Jersey,2447.5,   278.1,   Montana,   405.1,   Indiana,"      27,374",   Kansas,"4,357",   California,20.66
-    15,TN,   Tennessee,2250.6,   354.0,   Mississippi,   400.4,   Tennessee,"      25,153",   Vermont,"4,344",   Alaska,20.25
-    16,WA,   Washington,2036.5,   302.0,   West Virginia,   398.4,   Massachusetts,"      24,512",   Oklahoma,"4,268",   North Carolina,19.98
-    17,KY,   Kentucky,1976.5,454.7,   Arkansas,   385.3,   Washington,"      22,893",   West Virginia,"4,251",   Pennsylvania,19.56
-    18,AL,   Alabama,1959.7,409.5,   South Carolina,   358.3,   Missouri,"      22,885",   New Jersey,"4,246",   New Mexico,19.4
-    19,MO,   Missouri,1928.4,321.6,   Tennessee,   354.0,   Maryland,"      21,517",   Indiana,"4,217",   Virginia,18.91
-    20,MN,   Minnesota,1867.3,   351.6,   Minnesota,   351.6,   Alabama,"      21,507",   Hawaii,"4,191",   Oregon,18.89
-    21,WI,   Wisconsin,1800.1,   316.3,   Idaho,   339.7,   Wisconsin,"      21,483",   Arkansas,"4,128",   Maine,18.78
-    22,SC,   South Carolina,1661.6,   358.3,   Ohio,   332.3,   Minnesota,"      20,869",   South Carolina,"4,034",   Missouri,18.54
-    23,OK,   Oklahoma,1551.6,412.6,   New Mexico,   329.2,   Kentucky,"      19,675",   Delaware,"4,019",   Tennessee,18.33
-    24,CO,   Colorado,1516.9,   300.5,   Georgia,   324.9,   Arizona,"      19,374",   Connecticut,"3,977",   South Carolina,18.26
-    25,IA,   Iowa,1492.3,489.3,   Missouri,   321.6,   South Carolina,"      18,705",   New Hampshire,"3,971",   Michigan,18.22
-    26,MD,   Maryland,1481.1,256,   Wisconsin,   316.3,   Colorado,"      16,751",   Tennessee,"3,956",   Wisconsin,18.22
-    27,AZ,   Arizona,1399.6,218.2,   Virginia,   311.8,   Oklahoma,"      16,049",   Minnesota,"3,930",   Washington,18.11
-    28,MA,   Massachusetts,1396.9,   213.1,   Maine,   306.8,   Iowa,"      14,766",   Ohio,"3,907",   Georgia,17.96
-    29,MS,   Mississippi,1189.2,   400.4,   Illinois,   306.5,   Connecticut,"      14,221",   Georgia,"3,844",   Ohio,17.93
-    30,KS,   Kansas,1165.3,   407.6,   Washington,   302.0,   Mississippi,"      13,206",   Pennsylvania,"3,829",   Montana,17.73
+     1,TX,   Texas,11769.90,466.1,   Wyoming,   948.1,   Texas,"    137,532",   Alaska,"8,807",   Hawaii,30.75
+     2,CA,   California,7825.70,209.6,   Alaska,   898.5,   California,"    117,003",   Louisiana,"8,661",   Connecticut,25.63
+     3,FL,   Florida,4381.90,232.6,   Louisiana,   894.4,   New York,"      61,619",   Wyoming,"7,904",   Vermont,24.2
+     4,LA,   Louisiana,4065.40,894.4,   North Dakota,   712.6,   Florida,"      60,172",   North Dakota,"6,740",   New Hampshire,23.87
+     5,IL,   Illinois,3936.70,306.5,   Iowa,   489.3,   Pennsylvania,"      48,701",   Texas,"5,446",   Massachusetts,23.32
+     6,OH,   Ohio,3833.70,332.3,   Texas,   466.1,   Ohio,"      45,081",   Iowa,"4,841",   Rhode Island,23.12
+     7,PA,   Pennsylvania,3758.80,   295.6,   South Dakota,   464.9,   Illinois,"      44,989",   Maine,"4,746",   Delaware,22.95
+     8,NY,   New York,3728.40,   192.2,   Nebraska,   461.1,   Louisiana,"      39,369",   South Dakota,"4,651",   New York,22.91
+     9,GA,   Georgia,3155.70,   324.9,   Kentucky,   454.7,   New Jersey,"      37,362",   Montana,"4,610",   Maryland,22.48
+    10,IN,   Indiana,2871.10,442.3,   Indiana,   442.3,   Georgia,"      37,338",   Kentucky,"4,526",   Arizona,21.78
+    11,MI,   Michigan,2798.10,   283.3,   Oklahoma,   412.6,   Michigan,"      34,540",   Alabama,"4,494",   Florida,21.66
+    12,NC,   North Carolina,2705.20,   283.0,   Alabama,   409.5,   North Carolina,"      32,989",   Mississippi,"4,446",   New Jersey,20.91
+    13,VA,   Virginia,2502.10,   311.8,   Kansas,   407.6,   Virginia,"      29,826",   Nebraska,"4,421",   Nevada,20.87
+    14,NJ,   New Jersey,2447.50,   278.1,   Montana,   405.1,   Indiana,"      27,374",   Kansas,"4,357",   California,20.66
+    15,TN,   Tennessee,2250.60,   354.0,   Mississippi,   400.4,   Tennessee,"      25,153",   Vermont,"4,344",   Alaska,20.25
+    16,WA,   Washington,2036.50,   302.0,   West Virginia,   398.4,   Massachusetts,"      24,512",   Oklahoma,"4,268",   North Carolina,19.98
+    17,KY,   Kentucky,1976.50,454.7,   Arkansas,   385.3,   Washington,"      22,893",   West Virginia,"4,251",   Pennsylvania,19.56
+    18,AL,   Alabama,1959.70,409.5,   South Carolina,   358.3,   Missouri,"      22,885",   New Jersey,"4,246",   New Mexico,19.4
+    19,MO,   Missouri,1928.40,321.6,   Tennessee,   354.0,   Maryland,"      21,517",   Indiana,"4,217",   Virginia,18.91
+    20,MN,   Minnesota,1867.30,   351.6,   Minnesota,   351.6,   Alabama,"      21,507",   Hawaii,"4,191",   Oregon,18.89
+    21,WI,   Wisconsin,1800.10,   316.3,   Idaho,   339.7,   Wisconsin,"      21,483",   Arkansas,"4,128",   Maine,18.78
+    22,SC,   South Carolina,1661.60,   358.3,   Ohio,   332.3,   Minnesota,"      20,869",   South Carolina,"4,034",   Missouri,18.54
+    23,OK,   Oklahoma,1551.60,412.6,   New Mexico,   329.2,   Kentucky,"      19,675",   Delaware,"4,019",   Tennessee,18.33
+    24,CO,   Colorado,1516.90,   300.5,   Georgia,   324.9,   Arizona,"      19,374",   Connecticut,"3,977",   South Carolina,18.26
+    25,IA,   Iowa,1492.30,489.3,   Missouri,   321.6,   South Carolina,"      18,705",   New Hampshire,"3,971",   Michigan,18.22
+    26,MD,   Maryland,1481.10,256,   Wisconsin,   316.3,   Colorado,"      16,751",   Tennessee,"3,956",   Wisconsin,18.22
+    27,AZ,   Arizona,1399.60,218.2,   Virginia,   311.8,   Oklahoma,"      16,049",   Minnesota,"3,930",   Washington,18.11
+    28,MA,   Massachusetts,1396.90,   213.1,   Maine,   306.8,   Iowa,"      14,766",   Ohio,"3,907",   Georgia,17.96
+    29,MS,   Mississippi,1189.20,   400.4,   Illinois,   306.5,   Connecticut,"      14,221",   Georgia,"3,844",   Ohio,17.93
+    30,KS,   Kansas,1165.30,   407.6,   Washington,   302.0,   Mississippi,"      13,206",   Pennsylvania,"3,829",   Montana,17.73
     31,AR,   Arkansas,"1,125.60",   385.3,   Colorado,   300.5,   Oregon,"      12,592",   Missouri,"3,817",   Kansas,17.72
     32,OR,   Oregon,977.1,   254.6,   Pennsylvania,   295.6,   Kansas,"      12,457",   Wisconsin,"3,774",   Mississippi,17.63
     33,NE,   Nebraska,843.8,461.1,   Delaware,   284.7,   Arkansas,"      12,061",   Massachusetts,"3,739",   Alabama,17.49

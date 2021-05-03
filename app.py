@@ -31,6 +31,11 @@ consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
 consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
 consumption = [i.strip(' ') for i in consumption]
 
+#creating cpc list
+per_capita = state_consumption_df.loc['0': 'Consumption per Capita'].values.tolist()
+# per_capita = [unicodedata.normalize('NFKD', p) for p in per_capita]
+# per_capita = [k.strip(' ') for k in per_capita]
+
 #making lines for the multiline chart
 multiline_df['Month'] = pd.to_datetime(multiline_df['Month'])
 trace1_multiline = go.Scatter(x=multiline_df['Month'], y=multiline_df['Total Fossil Fuels Production'], mode='lines', name='Fossil Fuel Production', line_color='black')
@@ -113,11 +118,15 @@ index_page = html.Div(style={
     html.Br(),
 
     #once a user selects a state, the hidden[] option will become false, and show all of this information(state image, consumption, consumption per capita)
-    html.Div(id='selected state', children=[
-        html.Img(id='state img', src=[], style={'width':'20%', 'height':'20%'}),
-        html.H2(id='state name', children=[]),
-        html.H2(id='state consumption', children=[])
-    ], style={'textAlign':'center'}, hidden=[]),
+    html.Div(id='hide container', children=[
+        html.Div(id='selected state', children=[
+        html.Img(id='state img', src=[], style={'width':'20%', 'height':'20%', }),
+        html.Div(children=[
+            html.H2(id='state name', children=[]),
+            html.H2(id='state consumption', children=[]),
+        ]),
+    ], style={'textAlign':'center'}, className='selected_state'),
+    ], hidden=[]),
     html.Br(),
     html.Br(),
 
@@ -199,7 +208,7 @@ page_2_layout = html.Div(style={
     [Output(component_id='output_container', component_property='children'),
     Output(component_id='usmap', component_property='figure'),
     Output(component_id='state img', component_property='src'),
-    Output(component_id='selected state', component_property='hidden'),
+    Output(component_id='hide container', component_property='hidden'),
     Output(component_id='state name', component_property='children'),
     Output(component_id='state consumption', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
@@ -228,10 +237,10 @@ def update_map(option_slctd):
         data=[go.Choropleth(
             locationmode='USA-states',
             locations=state_consumption_df['Code'],
-            z=state_consumption_df["Consumption per Capita"].astype(float),
+            z=state_consumption_df["Consumption"],
             colorscale='Greens',
             reversescale=True,
-            colorbar_title='Consumption per Capita',
+            colorbar_title='Consumption',
             text=state_consumption_df['text'],
         )]
     )
