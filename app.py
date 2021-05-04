@@ -155,7 +155,8 @@ page_1_layout = html.Div(style={
                   'data': data_multiline,
                   'layout': go.Layout(
                       title='Fossil Fuel production vs Renewable Energy production',
-                      xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'})  
+                      xaxis={'title': 'Date'}, yaxis={'title': 'Energy Production in Quadrillion Btu'},
+                      height=600,)  
                 }),
         html.Br(),
         html.Br(),
