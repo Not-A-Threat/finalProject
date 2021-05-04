@@ -240,7 +240,7 @@ def update_map(option_slctd):
             locations=state_consumption_df['Code'],
             z=state_consumption_df["Consumption"],
             colorscale='Greens',
-            reversescale=True,
+            reversescale=False,
             colorbar_title='Consumption',
             text=state_consumption_df['text'],
         )]
