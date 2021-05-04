@@ -31,10 +31,12 @@ consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
 consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
 consumption = [i.strip(' ') for i in consumption]
 
+
 total=0
 #get average of consumption
-# for c in consumption:
-#     total+=
+for c in consumption:
+    total+=float(c.replace(',', ''))
+average = round(total/50, 2)
 
 #creating cpc list
 per_capita = state_consumption_df.loc['0': 'Consumption per Capita'].values.tolist()
@@ -129,6 +131,7 @@ index_page = html.Div(style={
         html.Div(children=[
             html.H2(id='state name', children=[]),
             html.H2(id='state consumption', children=[]),
+            html.H2(id='avg', children=[]),
         ]),
     ], style={'textAlign':'center'}, className='selected_state'),
     ], hidden=[]),
@@ -215,7 +218,8 @@ page_2_layout = html.Div(style={
     Output(component_id='state img', component_property='src'),
     Output(component_id='hide container', component_property='hidden'),
     Output(component_id='state name', component_property='children'),
-    Output(component_id='state consumption', component_property='children')],
+    Output(component_id='state consumption', component_property='children'),
+    Output(component_id='avg', component_property='children')],
     [Input(component_id='slct_state', component_property='value')]
 )
 def update_map(option_slctd):
@@ -225,17 +229,25 @@ def update_map(option_slctd):
     pictureOfState = f'{option_slctd}.png'
     state_name = f'State: {option_slctd}'
     state_consume = f'Total Consumption (in quadrillion Btu): '
+    bOrA = f'{option_slctd} is '
 
     #once a state is chosen that is in the State list information is grabbed from that state, and revealed
     for st in states: 
         if option_slctd == st:
             container = f"The state chosen by user was {option_slctd}"
-            # state_consumption_df_copy = state_consumption_df.copy()
-            # state_consumption_df_copy = state_consumption_df_copy[state_consumption_df_copy['State']==option_slctd]
             pictureOfState = app.get_asset_url(f'{option_slctd}.png')
             index = states.index(f'{option_slctd}')
             state_consume += consumption[index]
             hide_state=False
+            fConsume = float(consumption[index])
+            if fConsume < average:
+                difference = average - fConsume
+                difference = round(difference, 2)
+                bOrA += f'below the National average of {average} by {difference}'
+            else:
+                difference = fConsume - average 
+                difference = round(difference, 2)
+                bOrA += f'above the National average of {average} by {difference}'
 
     #US Map with data
     fig = go.Figure(
@@ -254,7 +266,7 @@ def update_map(option_slctd):
     fig.update_layout(
         geo_scope='usa',
     )
-    return container, fig, pictureOfState, hide_state, state_name, state_consume
+    return container, fig, pictureOfState, hide_state, state_name, state_consume, bOrA
 
 #update index
 @app.callback(Output(component_id='page-content', component_property='children'),
