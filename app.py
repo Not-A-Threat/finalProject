@@ -24,12 +24,17 @@ state_consumption_df['text'] = state_consumption_df['State'] + '<br>' + 'Consump
 states = state_consumption_df.loc['0':, 'State'].values.tolist()
 states = [unicodedata.normalize('NFKD', word) for word in states]
 states = [x.strip(' ') for x in states]
-states = sorted(states)
+sorted_states = sorted(states)
 
 #creating consumption list
 consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
 consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
 consumption = [i.strip(' ') for i in consumption]
+
+total=0
+#get average of consumption
+# for c in consumption:
+#     total+=
 
 #creating cpc list
 per_capita = state_consumption_df.loc['0': 'Consumption per Capita'].values.tolist()
@@ -95,7 +100,6 @@ index_page = html.Div(style={
     #A quick about us section
 
     html.H1('About Us', style={'textAlign': 'center', 'color':'#2b2b2b'}),
-#    html.H3('Future Energy was founded to help inspire people to inverse and use renewable energy. Eventually, we will run out of fossil fuels and we will need to use a new source of energy.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.H3('Our mission at Future Energy is to spark conversations about renewable energy. The fossil fuels we currently depend on will reach critically low levels if we do not do something right now. Take a look at the data, gathered by experienced researchers. We live by our motto: "See the data, make the change.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.H3('Renewable energy is the way to go.', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.H3('Created by Joseph Chica, Colin McNeil, Duy Minh, and Willis Reid', style={'textAlign':'center', 'color':'#2b2b2b'}),
@@ -108,7 +112,7 @@ index_page = html.Div(style={
     dcc.Dropdown(id='slct_state',
                 options=[
                     #loops through states list and adds them to the dropdown
-                    {'label': st, 'value': st} for st in states],
+                    {'label': st, 'value': st} for st in sorted_states],
                     multi=False,
                     value='none',
                     style={'width': '35%'}
