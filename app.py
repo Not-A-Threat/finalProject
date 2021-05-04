@@ -140,7 +140,10 @@ index_page = html.Div(style={
 
     #graph that shows the us map with data
     dcc.Graph(id='usmap', figure={}),
-        html.H3('*Total consumption is measured in Trillion Btu. Consumption per Capita is measured in Million Btu.', style={'textAlign': 'center', 'color': '#2b2b2b'}),
+    html.H3('*Total consumption is measured in Trillion Btu. Consumption per Capita is measured in Million Btu.', style={'textAlign': 'center', 'color': '#2b2b2b'}),
+    html.Br(),
+    html.Br(),
+    html.Hr(),
 ])
 
 #multigraph layout
@@ -167,7 +170,7 @@ page_1_layout = html.Div(style={
 page_2_layout = html.Div(style={
     "margin-left": "1rem",
     "padding": "2rem 1rem",
-}, children=[
+    }, children=[
     html.H1('Further Reading On Renewable Resources', style={'textAlign':'center', 'color': 'seagreen'}),
     html.Hr(),
     html.H3('SOLAR ENERGY'),
