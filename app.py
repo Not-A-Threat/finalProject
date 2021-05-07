@@ -57,6 +57,7 @@ server = app.server
 topMenu = html.Header(role='banner', children=[
     html.Div([
         html.A('Home', href='/'),
+        html.A('Energy Consumption', href='#ec'),
         html.A('Energy Production Over Time', href='/page-1'),
         html.A('Further Reading on Renewable Energy', href='/page-2'),
     ], className='topnav'),
@@ -107,7 +108,8 @@ index_page = html.Div(style={
     html.H3('Created by Joseph Chica, Colin McNeil, Duy Minh, and Willis Reid', style={'textAlign':'center', 'color':'#2b2b2b'}),
     html.Br(),
     html.Hr(),
-
+    
+    html.A(id='ec'),
     #Dropdown option to select a state
     html.H3('The following interactive US map displays how much non-renewable energy is consumed every year by each state in British thermal units (Btu). 1 Btu is about as much energy released by a burning match.', style={'color': '#2b2b2b'}),
     html.H3('Hover over the map to see the amount of energy each state consumes, or select a state below: *', style={'color': '#2b2b2b'}),
