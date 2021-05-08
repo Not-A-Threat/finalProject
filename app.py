@@ -233,7 +233,7 @@ def update_map(option_slctd):
     container = f"The state chosen by user was {option_slctd}"
     pictureOfState = f'{option_slctd}.png'
     state_name = f'State: {option_slctd}'
-    state_consume = f'Total Consumption (in quadrillion Btu): '
+    state_consume = f'Total Consumption (in trillion Btu): '
     bOrA = f'{option_slctd} is '
 
     #once a state is chosen that is in the State list information is grabbed from that state, and revealed
