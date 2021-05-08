@@ -31,7 +31,6 @@ consumption = state_consumption_df.loc['0':, 'Consumption'].values.tolist()
 consumption = [unicodedata.normalize('NFKD', total) for total in consumption]
 consumption = [i.strip(' ') for i in consumption]
 
-
 total=0
 #get average of consumption
 for c in consumption:
@@ -260,13 +259,24 @@ def update_map(option_slctd):
         data=[go.Choropleth(
             locationmode='USA-states',
             locations=state_consumption_df['Code'],
-            z=state_consumption_df["Consumption"],
-            colorscale='Greens',
+            z=state_consumption_df["Consumption per Capita"],
+            colorscale='emrld',
             reversescale=False,
-            colorbar_title='Consumption',
+            colorbar_title='Consumption per Capita',
             text=state_consumption_df['text'],
         )]
     )
+    # Colorscales:
+    #          'aggrnyl' f,
+    #          'bluyl' t,
+    #          'curl' f,
+    #          'earth' t,
+    #          'emrld' f, 'fall', 'geyser',
+    #          'haline', 'jet',
+    #          'mint',
+    #          'orrd',
+    #          'plasma', 'prgn',
+    #          'ylgn',
 
     #to focus on just US
     fig.update_layout(
